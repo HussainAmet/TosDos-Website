@@ -5,7 +5,6 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "",
     "start": "nodemon index.js"
   },
   "author": "Hussain Amet",
