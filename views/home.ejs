@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container dfag addlist">
+  <form class="dfag addtask" action="/homedelete" method="post">
+    <% hometodolist.forEach((list) => { %>
+      <div class="whbr task">
+        <input type="checkbox" onChange="this.form.submit()" name="checkbox" value="<%= list._id %>">
+        <hr>
+        <p class="w500s40p m0"><%= list.todo %></p>
+      </div>
+      <div class="cal">
+        <p><%= list.calender %></p>
+      </div>
+    <% }) %>
+  </form>
+  <form action="/homesubmit" method="POST">
+    <input type="text" maxlength="32" class="whbr w500s40p" name="textforitems" placeholder="Add items in list" required>
+    <div class="flex-container plus">
+      <input type="submit" value="+" class="w700s17">
+    </div>
+  </form>
+</div>
+
+<%- include("partials/footer.ejs") %>
