@@ -102,7 +102,7 @@ app.post("/workdelete",async (req, res) => {
     res.redirect("/work");
 });
 app.get("/health", (req, res) => {
-    res.status(500).send("Internal Server Error")
+    res.status(200).send("OK")
 });
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
