@@ -29,15 +29,26 @@ const homeModelTodo = mongoose.model("hometodo", homeTosdosSchema);
 const workModelTodo = mongoose.model("worktodo", workTosdosSchema);
 
 const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-let cal = "";
-let year = "";
+var cal = "";
+var year = "";
+//function datetime () {
+//    const dmyhm = new Date();
+//    const date = dmyhm.getDate();
+//    const month = dmyhm.getMonth();
+//    year = dmyhm.getFullYear();
+//    const hrs = dmyhm.getHours();
+//    const min = dmyhm.getMinutes();
+//    cal = `${date} ${monthName[month]} ${year} ${hrs}:${min}`;
+//}
 function datetime () {
     const dmyhm = new Date();
-    const date = dmyhm.getDate();
-    const month = dmyhm.getMonth();
-    year = dmyhm.getFullYear();
-    const hrs = dmyhm.getHours()+5;
-    const min = dmyhm.getMinutes()+30;
+    const indiaTime = dmyhm.toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+    const indiaDate = new Date(indiaTime);
+    const date = indiaDate.getDate();
+    const month = indiaDate.getMonth();
+    year = indiaDate.getFullYear();
+    const hrs = indiaDate.getHours();
+    const min = indiaDate.getMinutes();
     cal = `${date} ${monthName[month]} ${year} ${hrs}:${min}`;
 }
 datetime();
