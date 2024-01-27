@@ -36,8 +36,8 @@ function datetime () {
     const date = dmyhm.getDate();
     const month = dmyhm.getMonth();
     year = dmyhm.getFullYear();
-    const hrs = dmyhm.getHours();
-    const min = dmyhm.getMinutes();
+    const hrs = dmyhm.getHours()+5;
+    const min = dmyhm.getMinutes()+30;
     cal = `${date} ${monthName[month]} ${year} ${hrs}:${min}`;
 }
 datetime();
