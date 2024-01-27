@@ -101,6 +101,9 @@ app.post("/workdelete",async (req, res) => {
     await workModelTodo.deleteOne({_id: req.body.checkbox});
     res.redirect("/work");
 });
+app.get("/health", (req, res) => {
+    res.send({status: 200, message: "OK"})
+});
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
