@@ -102,7 +102,7 @@ app.post("/workdelete",async (req, res) => {
     res.redirect("/work");
 });
 app.get("/health", (req, res) => {
-    res.status(404).send("OK")
+    res.status(400).send("OK")
 });
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
