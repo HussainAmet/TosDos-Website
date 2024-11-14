@@ -56,12 +56,8 @@ const dtodo1 = new homeModelTodo({
     todo: "Welcome to your todo list.",
     calender: cal
 });
-const dtodo2 = new homeModelTodo({
-    todo: "Refresh if you don't see your task.",
-    calender: cal
-});
 const dtodo3 = new homeModelTodo({
-    todo: "Hit the checkbox to delete an item.",
+    todo: "Hit the checkbox to delete an todo.",
     calender: cal
 });
 
