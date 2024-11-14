@@ -9,11 +9,10 @@ import 'esm';
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.set('view engine', 'ejs');
 app.set('views', 'views');
+app.set('view engine', 'ejs');
 
 app.use(express.static("public"));
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -67,11 +66,11 @@ app.get("/", async (req, res) => {
     if (hometodolist.length === 0) {
         homeModelTodo.insertMany(defaulttodo);
     }
-    res.render("home.ejs", { hometodolist, year });
+    res.render("home", { hometodolist, year });
 });
 app.get("/home", async (req, res) => {
     const hometodolist = await homeModelTodo.find({});
-    res.render("home.ejs", { hometodolist, year });
+    res.render("home", { hometodolist, year });
 });
 app.post("/homesubmit", (req, res) => {
     const hometask = req.body["textforitems"];
