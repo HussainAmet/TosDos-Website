@@ -10,12 +10,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
-app.set('views', '/views');
-
-app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' https://vercel.live;");
-    next();
-});
+// app.set('views', '/views');
 
 app.use(express.static("public"));
 
