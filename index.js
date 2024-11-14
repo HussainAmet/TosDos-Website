@@ -12,6 +12,11 @@ const port = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', '/views');
 
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' https://vercel.live;");
+    next();
+});
+
 app.use(express.static("public"));
 
 
@@ -34,9 +39,9 @@ const workModelTodo = mongoose.model("worktodo", workTosdosSchema);
 const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var cal = "";
 var year = "";
-function datetime () {
+function datetime() {
     const dmyhm = new Date();
-    const indiaTime = dmyhm.toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+    const indiaTime = dmyhm.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
     const indiaDate = new Date(indiaTime);
     const date = indiaDate.getDate();
     const month = indiaDate.getMonth();
@@ -63,15 +68,15 @@ const dtodo3 = new homeModelTodo({
 const defaulttodo = [dtodo1, dtodo2, dtodo3];
 
 app.get("/", async (req, res) => {
-    const hometodolist =  await homeModelTodo.find({});
+    const hometodolist = await homeModelTodo.find({});
     if (hometodolist.length === 0) {
         homeModelTodo.insertMany(defaulttodo);
     }
-    res.render("home.ejs", {hometodolist, year});
+    res.render("home.ejs", { hometodolist, year });
 });
-app.get("/home",async (req, res) => {
-    const hometodolist =  await homeModelTodo.find({});
-    res.render("home.ejs", {hometodolist, year});
+app.get("/home", async (req, res) => {
+    const hometodolist = await homeModelTodo.find({});
+    res.render("home.ejs", { hometodolist, year });
 });
 app.post("/homesubmit", (req, res) => {
     const hometask = req.body["textforitems"];
@@ -83,14 +88,14 @@ app.post("/homesubmit", (req, res) => {
     newhometask.save();
     res.redirect("/home")
 });
-app.post("/homedelete",async (req, res) => {
-    await homeModelTodo.deleteOne({_id: req.body.checkbox});
+app.post("/homedelete", async (req, res) => {
+    await homeModelTodo.deleteOne({ _id: req.body.checkbox });
     res.redirect("/home");
 });
 
-app.get("/work",async (req, res) => {
-    const worktodolist =  await workModelTodo.find({});
-    res.render("work.ejs", {worktodolist, year});
+app.get("/work", async (req, res) => {
+    const worktodolist = await workModelTodo.find({});
+    res.render("work.ejs", { worktodolist, year });
 });
 app.post("/worksubmit", (req, res) => {
     const worktask = req.body["textforitems"];
@@ -102,8 +107,8 @@ app.post("/worksubmit", (req, res) => {
     newworktask.save();
     res.redirect("/work")
 });
-app.post("/workdelete",async (req, res) => {
-    await workModelTodo.deleteOne({_id: req.body.checkbox});
+app.post("/workdelete", async (req, res) => {
+    await workModelTodo.deleteOne({ _id: req.body.checkbox });
     res.redirect("/work");
 });
 app.get("/health", (req, res) => {

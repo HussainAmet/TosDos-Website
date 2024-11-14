@@ -9,8 +9,10 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "index.js",
-      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"]
+      "headers": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self' https://vercel.live;"
+      },
+      "dest": "index.js"
     }
   ]
 }
