@@ -89,7 +89,7 @@ app.post("/homedelete", async (req, res) => {
 
 app.get("/work", async (req, res) => {
     const worktodolist = await workModelTodo.find({});
-    res.render("work.ejs", { worktodolist, year });
+    res.render("work", { worktodolist, year });
 });
 app.post("/worksubmit", (req, res) => {
     const worktask = req.body["textforitems"];
