@@ -56,12 +56,12 @@ const dtodo1 = new homeModelTodo({
     todo: "Welcome to your todo list.",
     calender: cal
 });
-const dtodo3 = new homeModelTodo({
+const dtodo2 = new homeModelTodo({
     todo: "Hit the checkbox to delete an todo.",
     calender: cal
 });
 
-const defaulttodo = [dtodo1, dtodo2, dtodo3];
+const defaulttodo = [dtodo1, dtodo2];
 
 app.get("/", async (req, res) => {
     const hometodolist = await homeModelTodo.find({});
